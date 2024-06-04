@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { MainPage } from './Components/Main';
+import { New, Stock, GoodsInStock } from './Components/Navs';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage/> } >
+        <Route index element={<div>No page is selected.</div> } />
+        <Route path="new" element={<New />} />
+        <Route path="stock" element={<Stock />} />
+        <Route path="goods" element={<GoodsInStock />} />
+        {/* <Route path="*" element={<NotFound />} />   подстановочный путь */}
+      </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
